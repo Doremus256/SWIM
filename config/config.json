@@ -23,8 +23,8 @@
 =======
     "development": {
       "username": "root",
-      "password": "SecretGarden13!",
-      "database": "barkApp",
+      "password": "password",
+      "database": "swim_db",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
