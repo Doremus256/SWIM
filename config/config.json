@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "development": {
     "username": "root",
     "database": "swim_db",
@@ -19,3 +20,31 @@
     "dialect": "mysql"
   }
 }
+=======
+    "development": {
+      "username": "root",
+      "password": "SecretGarden13!",
+      "database": "barkApp",
+      "host": "127.0.0.1",
+      "port": 3306,
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "root",
+      "password": null,
+      "database": "database_test",
+      "host": "127.0.0.1",
+      "port": 3306,
+      "dialect": "mysql"
+    },
+    "production": {
+      "username": "root",
+      "password": null,
+      "database": "database_production",
+      "host": "127.0.0.1",
+      "port": 3306,
+      "dialect": "mysql"
+    }
+  }
+  
+>>>>>>> a1c24c8294f26eb038dcf931abd85c51c6527d6f
