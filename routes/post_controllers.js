@@ -8,6 +8,7 @@ var bark = require("../models/bark.js");
 // Create all our routes and set up logic within those routes where required..
 
 // GET // - FOR DISPLAYING ALL BARKS CREATED WITHIN NEWSFEED 
+    
 router.get("/", function (req, res) {
     bark.all(function (data) {
         var hbsObject = {
