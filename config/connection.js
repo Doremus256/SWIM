@@ -5,8 +5,8 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: " ",
-    database: "barkApp"
+    password: process.env.password,
+    database: "swim_db"
 });
 
 // if (process.env.JAWSDB_URL) {
