@@ -6,6 +6,10 @@ var db = require("../models");
 
 module.exports = function (app) {
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// ROUTES for items table //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
     // GET route for getting all ITEMS in current inventory seeded on the backend //
     app.get("/api/items", function (req, res) {
         // sequelize findAll() so we get every row in the Items table
@@ -41,4 +45,13 @@ module.exports = function (app) {
             res.json(dbItems);
         });
     });
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// ROUTES for vendors table //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// ROUTES for orders table //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
 };
