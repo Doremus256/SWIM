@@ -4,10 +4,12 @@
   "description": "Twitter Clone - Project 2",
   "main": "server.js",
   "dependencies": {
-    "express-handlebars": "^5.1.0",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.6",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mysql": "^2.18.1",
-    "sequelize": "^6.3.5"
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1"
   },
   "devDependencies": {},
   "scripts": {
