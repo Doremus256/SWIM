@@ -2,20 +2,21 @@
 // REQUIRING index.js by requiring models folder it lives in
 var db = require("../models");
 
-// ROUTES //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    // ROUTES // ROUTES // ROUTES // ROUTES // ROUTES  //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 module.exports = function (app) {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-    // ROUTES for items table //
+    // ROUTES for ITEMS table //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     // GET route for getting all ITEMS in current inventory seeded on the backend //
     app.get("/api/items", function (req, res) {
         // sequelize findAll() so we get every row in the Items table
         db.Items.findAll({}).then(function (dbItems) {
-            // Next line, "dbItems" will change to Handlebars file name //
-            res.render(dbItems);
+            res.render("views");
         });
     });
 
@@ -31,8 +32,7 @@ module.exports = function (app) {
                 id: req.params.id
             }
         }).then(function (dbItems) {
-            // Next line, "dbItems" will change to Handlebars file name //
-            res.render(dbItems);
+            res.render("views");
         });
     });
 
@@ -44,8 +44,7 @@ module.exports = function (app) {
                 id: req.body.id
             }
         }).then(function (dbItems) {
-            // Next line, "dbItems" will change to Handlebars file name //
-            res.render(dbItems);
+            res.render("views");
         });
     });
 
@@ -55,12 +54,13 @@ module.exports = function (app) {
         db.Items.create(
             req.body
         ).then(function (dbItems) {
-            // Next line, "dbItems" will change to Handlebars file name //
-            res.render(dbItems);
+            res.render("views");
         });
     });
 
-    // ROUTES FOR VENDOR TABLE //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    // ROUTES for VENDORS table //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     // GET route for getting all ITEMS in current inventory seeded on the backend //
     app.get("/api/itemVendors/:id", function (req, res) {
@@ -70,9 +70,7 @@ module.exports = function (app) {
                 item_id: req.params.id
             }
         }).then(function (dbVendors) {
-            // Next line, "dbItems" will change to Handlebars file name //
-
-            res.render(dbVendors);
+            res.render("views");
         });
     });
 };
