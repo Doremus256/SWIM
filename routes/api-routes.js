@@ -1,5 +1,5 @@
 // DEPENDENCIES //
-// REQUIRING index.js by requiring models folder it lives in //
+// REQUIRING index.js by requiring models folder it lives in
 var db = require("../models");
 
 // ROUTES //
@@ -22,8 +22,8 @@ module.exports = function (app) {
     // PUT route for updating current inventory given :item //
     app.put("/api/items/:id", function (req, res) {
         console.log(req.body);
-        // sequelize update() so we can change item_QOH (quantity on hand) //
-        // of a single given item_name (selected from dropdown menu to avoid typos) //
+        // sequelize update() so we can change item_QOH (quantity on hand)
+        // of a single given item_name (selected from dropdown menu to avoid typos)
         db.Items.update({
             item_QOH: req.body.item_QOH,
         }, {
