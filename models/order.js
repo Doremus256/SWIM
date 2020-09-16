@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
                }
           },
           item_quantity: {
-               type: DataTypes.INT,
+               type: DataTypes.INTEGER,
                allowNull: false,
                validate:{
                     len: [1]
