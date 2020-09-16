@@ -2,12 +2,14 @@
 // REQUIRING index.js by requiring models folder it lives in //
 var db = require("../models");
 
-// ROUTES //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    // ROUTES // ROUTES // ROUTES // ROUTES // ROUTES  //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 module.exports = function (app) {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-    // ROUTES for items table //
+    // ROUTES for ITEMS table //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     // GET route for getting all ITEMS in current inventory seeded on the backend //
@@ -60,7 +62,9 @@ module.exports = function (app) {
         });
     });
 
-    // ROUTES FOR VENDOR TABLE //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    // ROUTES for VENDORS table //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     // GET route for getting all ITEMS in current inventory seeded on the backend //
     app.get("/api/itemVendors/:id", function (req, res) {
