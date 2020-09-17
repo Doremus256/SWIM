@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
                     len: [1]
                }
           }
-     });
+     }, {timestamps: false});
 
 
      Order.associate = function(models) {

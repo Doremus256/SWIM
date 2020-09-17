@@ -20,7 +20,7 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     }
-  });
+  }, {timestamps: false});
 
   Vendor.associate = function (models) {
     Vendor.hasMany(models.Item, {
