@@ -10,9 +10,20 @@ var db = require("../models");
 
 
 
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 // ROUTES for ITEMS table //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+    // GET route for getting all ITEMS in current inventory seeded on the backend //
+    app.get("/", function (req, res) {
+        // sequelize findAll() so we get every row in the Items table
+        db.Items.findAll({}).then(function (dbItems) {
+            res.render("views", {
+                data: dbItems
+            });
+        });
+    });
 
 // GET route for getting all ITEMS in current inventory seeded on the backend //
 
@@ -32,10 +43,12 @@ router.put("/items/:id", function (req, res) {
                 id: req.params.id
             }
         }).then(function (dbItems) {
+
             res.render("views");
         }).catch(err => {
             console.log(`Error:${err}`);
             return err;
+
         });
     }
     catch
@@ -54,8 +67,10 @@ router.delete("/items/:id", function (req, res) {
             where: {
                 id: req.body.id
             }
+
         }).then(dbItems => {
             res.render("views");
+
         });
     }
     catch
@@ -63,6 +78,7 @@ router.delete("/items/:id", function (req, res) {
         error => console.log(error);
     }
 });
+
 
 // POST route for creating new items into inventory 
 router.post("/items", function (req, res) {
@@ -75,6 +91,7 @@ router.post("/items", function (req, res) {
             req.body
         ).then(dbItems => {
             res.render("views", { data: dbItems });
+
         });
     }
     catch
@@ -98,7 +115,9 @@ router.get("/itemVendors/:id", function (req, res) {
                 item_id: req.params.id
             }
         }).then(function (dbVendors) {
-            res.render("views");
+            res.render("views", {
+                Vendors: dbVendors
+            });
         });
     }
     catch

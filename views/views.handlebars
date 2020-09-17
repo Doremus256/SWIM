@@ -1,41 +1,46 @@
- <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          <img src="public/assets/images/SWIM-Logo-title.jpg" width="30" height="30" alt="" loading="lazy">
-        </a>
-    </nav>
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="public/assets/images/SWIM-Logo-title.jpg" width="30" height="30" alt="" loading="lazy">
+  </a>
+</nav>
 
-    <h1>Stock Watch Inventory Management</h1>
+<h1>Stock Watch Inventory Management</h1>
 
-    <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm">
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Item Used
-                </button>
-                <div class="dropdown-menu">
-                  ...
-                </div>
-              </div>
-          </div>
-          <div class="col-sm">
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Quantity Used
-                </button>
-                <div class="dropdown-menu">
-                  ...
-                </div>
-              </div>
-          </div>
-          <div class="col-sm">
-                <label for="price">Price:</label>
-                <input type="number" min="0.00" max="100000.00" step="0.01" name="price" id="price" required="required">
-          </div>
-          <input class="btn btn-primary" type="button" value="Update">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      {{!-- Update Button on upper part of page - updates item_QOH --}}
+      <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Item Used
+        </button>
+        <div class="dropdown-menu">
+          ...
         </div>
-        </br>
-        <div class="row">
+        
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Quantity Used
+        </button>
+        <div class="dropdown-menu">
+          ...
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <label for="price">Price:</label>
+      <input type="number" min="0.00" max="100000.00" step="0.01" name="price" id="price" required="required">
+    </div>
+    <input class="btn btn-primary" type="button" value="Update">
+  </div>
+  </br>
+
+  <div class="row">
             <div class="col-8">
                 <div class="row">
                     <div class="col-4 overflow-auto">items go here</div>
@@ -55,3 +60,4 @@
                 </div>
             </div>
         </div>
+

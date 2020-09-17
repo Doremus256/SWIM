@@ -13,3 +13,7 @@ $("#updateBtn").on("click", function (event) {
         location.redirect("/")
     })
 });
+
+
+
+
