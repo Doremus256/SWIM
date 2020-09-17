@@ -1,12 +1,3 @@
-$.ajax({
-    method: "GET",
-    data: data,
-    URL: "/api/items"
-}).then(function (response) {
-    console.log(response)
-})
-
-
 $("#updateBtn").on("click", function (event) {
     event.preventDefault()
     var id = $("#itemDropdown").val()
