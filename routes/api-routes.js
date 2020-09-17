@@ -1,16 +1,19 @@
 // DEPENDENCIES //
+var express = require("express");
+var router = express.Router();
 // REQUIRING index.js by requiring models folder it lives in
 var db = require("../models");
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-    // ROUTES // ROUTES // ROUTES // ROUTES // ROUTES  //
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// ROUTES // ROUTES // ROUTES // ROUTES // ROUTES  //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-module.exports = function (app) {
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-    // ROUTES for ITEMS table //
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// ROUTES for ITEMS table //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     // GET route for getting all ITEMS in current inventory seeded on the backend //
     app.get("/", function (req, res) {
@@ -22,11 +25,17 @@ module.exports = function (app) {
         });
     });
 
-    // PUT route for updating current inventory given :item //
-    app.put("/api/items/:id", function (req, res) {
-        console.log(req.body);
-        // sequelize update() so we can change item_QOH (quantity on hand)
-        // of a single given item_name (selected from dropdown menu to avoid typos)
+// GET route for getting all ITEMS in current inventory seeded on the backend //
+
+
+// PUT route for updating current inventory given :item //
+router.put("/items/:id", function (req, res) {
+    console.log(req.body);
+    // sequelize update() so we can change item_QOH (quantity on hand)
+    // of a single given item_name (selected from dropdown menu to avoid typos)
+    try
+    {
+        console.log(`Hit router.get("/items/:id")`);
         db.Items.update({
             item_QOH: req.body.item_QOH,
         }, {
@@ -34,45 +43,73 @@ module.exports = function (app) {
                 id: req.params.id
             }
         }).then(function (dbItems) {
-            res.render("views", {
-                data: dbItems
-            });
-        });
-    });
 
-    // DELETE route for deleting items from inventory (from items table within swim_db)
-    app.delete("/api/items/:id", function (req, res) {
-        // sequelize destroy() so we can delete items completely from our items table //
+            res.render("views");
+        }).catch(err => {
+            console.log(`Error:${err}`);
+            return err;
+
+        });
+    }
+    catch
+    {
+        error => console.log(error);
+    }
+});
+
+// DELETE route for deleting items from inventory (from items table within swim_db)
+router.delete("/items/:id", function (req, res) {
+    // sequelize destroy() so we can delete items completely from our items table //
+    try
+    {
+        console.log(`Hit router.delete("/items/:id")`);
         db.Items.destroy({
             where: {
                 id: req.body.id
             }
-        }).then(function (dbItems) {
-            res.render("views", {
-                data: dbItems
-            });
-        });
-    });
 
-    // POST route for creating new items into inventory 
-    app.post("/api/items", function (req, res) {
-        // sequelize create() so we can delete items completely from our items table //
+        }).then(dbItems => {
+            res.render("views");
+
+        });
+    }
+    catch
+    {
+        error => console.log(error);
+    }
+});
+
+
+// POST route for creating new items into inventory 
+router.post("/items", function (req, res) {
+    // sequelize destroy() so we can delete items completely from our items table //
+    try
+    {
+        console.log(`Hit router.post("/items")`);
+        console.log(req.body);
         db.Items.create(
             req.body
-        ).then(function (dbItems) {
-            res.render("views", {
-                data: dbItems
-            });
+        ).then(dbItems => {
+            res.render("views", { data: dbItems });
+
         });
-    });
+    }
+    catch
+    {
+        error=> console.log(error);
+    }
+});
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-    // ROUTES for VENDORS table //
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// ROUTES for VENDORS table //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-    // GET route for getting all ITEMS in current inventory seeded on the backend //
-    app.get("/api/itemVendors/:id", function (req, res) {
-        // sequelize findAll() so we get every row in the Items table
+// GET route for getting all ITEMS in current inventory seeded on the backend //
+router.get("/itemVendors/:id", function (req, res) {
+    // sequelize findAll() so we get every row in the Items table
+    try
+    {
+        console.log(`Hit router.get("/itemVendors/:id")`);
         db.vendors.findAll({
             where: {
                 item_id: req.params.id
@@ -82,5 +119,11 @@ module.exports = function (app) {
                 Vendors: dbVendors
             });
         });
-    });
-};
+    }
+    catch
+    {
+        error=> console.log(error);
+    }
+});
+
+module.exports = router;
