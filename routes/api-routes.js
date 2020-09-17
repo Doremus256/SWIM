@@ -13,10 +13,12 @@ module.exports = function (app) {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     // GET route for getting all ITEMS in current inventory seeded on the backend //
-    app.get("/api/items", function (req, res) {
+    app.get("/", function (req, res) {
         // sequelize findAll() so we get every row in the Items table
         db.Items.findAll({}).then(function (dbItems) {
-            res.render("views");
+            res.render("views", {
+                data: dbItems
+            });
         });
     });
 
@@ -32,7 +34,9 @@ module.exports = function (app) {
                 id: req.params.id
             }
         }).then(function (dbItems) {
-            res.render("views");
+            res.render("views", {
+                data: dbItems
+            });
         });
     });
 
@@ -44,17 +48,21 @@ module.exports = function (app) {
                 id: req.body.id
             }
         }).then(function (dbItems) {
-            res.render("views");
+            res.render("views", {
+                data: dbItems
+            });
         });
     });
 
     // POST route for creating new items into inventory 
     app.post("/api/items", function (req, res) {
-        // sequelize destroy() so we can delete items completely from our items table //
+        // sequelize create() so we can delete items completely from our items table //
         db.Items.create(
             req.body
         ).then(function (dbItems) {
-            res.render("views");
+            res.render("views", {
+                data: dbItems
+            });
         });
     });
 
@@ -70,7 +78,9 @@ module.exports = function (app) {
                 item_id: req.params.id
             }
         }).then(function (dbVendors) {
-            res.render("views");
+            res.render("views", {
+                Vendors: dbVendors
+            });
         });
     });
 };
