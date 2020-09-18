@@ -94,14 +94,15 @@ router.get("/get_vendor/:id", function (req, res) {
     try
     {
         console.log(`Hit router.get("/get_vendor/:id")`);
-        db.Vendor.findAll({
+        db.Vendor.findOne({
             where: {
-                item_id: req.params.id
+                id: req.params.id
             }
         }).then(function (dbVendors) {
-            res.render("views", {
-                Vendors: dbVendors
-            });
+            console.log(dbVendors);
+            // res.render("views", {
+            //     Vendors: dbVendors
+            // });
         });
     }
     catch
@@ -110,16 +111,16 @@ router.get("/get_vendor/:id", function (req, res) {
     }
 });
 
-router.get("/get_all_vendor", function (req, res) {
+router.get("/get_all_vendors", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
     try
     {
-        console.log(`Hit router.get("/itemVendors/:id")`);
+        console.log(`Hit router.get("/get_all_vendors")`);
         db.Vendor.findAll({}).then(function (dbVendors) {
             console.log(dbVendors);
-            res.render("views", {
-                data: dbVendors
-            });
+            // res.render("views", {
+            //     data: dbVendors
+            // });
         });
     }
     catch
@@ -136,8 +137,31 @@ router.post("/add_vendor", function (req, res) {
         db.Vendor.create(
             req.body
         ).then(newVendor => {
-            res.render("views", { data:newVendor });
+            console.log(newVendor);
+            // res.render("views", { data:newVendor });
 
+        });
+    }
+    catch
+    {
+        error=> console.log(error);
+    }
+});
+
+router.delete("/delete_vendor/:id", function (req, res) {
+    // sequelize findAll() so we get every row in the Items table
+    try
+    {
+        console.log(`Hit router.get("/get_vendor/:id")`);
+        db.Vendor.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbVendors) {
+            console.log(dbVendors);
+            // res.render("views", {
+            //     Vendors: dbVendors
+            // });
         });
     }
     catch
