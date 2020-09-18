@@ -29,9 +29,8 @@ module.exports = function (sequelize, DataTypes) {
                     len: [1]
                }
           }
-     }, {timestamps: false});
-
-
+     }, {timestamps: false})
+     
      Item.associate = function(models) {
 
           Item.belongsTo(models.Vendor, {
@@ -48,14 +47,3 @@ module.exports = function (sequelize, DataTypes) {
      return Item;
 };
 
-
-// Post.associate = function(models) {
-//      Post.belongsTo(models.Author, {
-//        foreignKey: {
-//          allowNull: false
-//        }
-//      });
-//    };
- 
-//    return Post;
-//  };
