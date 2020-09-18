@@ -6,5 +6,6 @@ $("#sourceBtn").on("click", function (event) {
         URL: "/api/vendors/" + id
     }).then(function (response) {
         console.log(response)
+        location.redirect("/")
     })
 });
