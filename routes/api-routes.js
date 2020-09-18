@@ -91,42 +91,20 @@ router.post("/items", function (req, res) {
 // GET route for getting all ITEMS in current inventory seeded on the backend //
 router.get("/get_vendor/:id", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
-    try
-    {
+    
         console.log(`Hit router.get("/get_vendor/:id")`);
         db.Vendor.findAll({
             where: {
-                item_id: req.params.id
+                id: req.params.id
             }
         }).then(function (dbVendors) {
-            res.render("views", {
-                Vendors: dbVendors
-            });
-        });
-    }
-    catch
-    {
-        error=> console.log(error);
-    }
+            console.log(dbVendors)
+            res.json(dbVendors)
+        }).catch(err=>res.json(err));
+    
+    
 });
 
-router.get("/get_all_vendor", function (req, res) {
-    // sequelize findAll() so we get every row in the Items table
-    try
-    {
-        console.log(`Hit router.get("/itemVendors/:id")`);
-        db.Vendor.findAll({}).then(function (dbVendors) {
-            console.log(dbVendors);
-            res.render("views", {
-                data: dbVendors
-            });
-        });
-    }
-    catch
-    {
-        error=> console.log(error);
-    }
-});
 
 router.post("/add_vendor", function (req, res) {
     // sequelize create() so we can create new a vendor in our vendors table //

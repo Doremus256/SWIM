@@ -1,11 +1,10 @@
 $("#sourceBtn").on("click", function (event) {
     event.preventDefault()
-    $.ajax({
-        method: "GET",
-        data: data,
-        URL: "/api/vendors/" + id
-    }).then(function (response) {
+    var id = $(this).attr("data-itemid");
+    console.log(id);
+    $.get("/api/get_vendor/" + id
+    ).then(function (response) {
         console.log(response)
-        location.redirect("/")
-    })
+    }).catch(err=>console.log(err))
 });
+console.log("this is loaded")
