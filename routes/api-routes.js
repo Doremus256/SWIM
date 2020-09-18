@@ -17,7 +17,6 @@ router.put("/items/:id", function (req, res) {
     console.log(req.body);
     // sequelize update() so we can change item_QOH (quantity on hand)
     // of a single given item_name (selected from dropdown menu to avoid typos)
-    try {
         console.log(`Hit router.get("/items/:id")`);
         db.Item.update({
             item_QOH: req.body.item_QOH,
@@ -32,18 +31,12 @@ router.put("/items/:id", function (req, res) {
             console.log(`Error:${err}`);
             return err;
 
-        });
-    }
-    catch
-    {
-        error => console.log(error);
-    }
+        }).catch(err=>res.json(err));
 });
 
 // DELETE route for deleting items from inventory (from items table within swim_db)
 router.delete("/items/:id", function (req, res) {
     // sequelize destroy() so we can delete items completely from our items table //
-    try {
         console.log(`Hit router.delete("/items/:id")`);
         db.Item.destroy({
             where: {
@@ -52,33 +45,22 @@ router.delete("/items/:id", function (req, res) {
 
         }).then(dbItems => {
             res.render("views");
-        });
-    }
-    catch
-    {
-        error => console.log(error);
-    }
+        }).catch(err=>res.json(err));
 });
 
 
 // POST route for creating new items into inventory 
-router.post("/items", function (req, res) {
+router.post("/add_item", function (req, res) {
     // sequelize destroy() so we can delete items completely from our items table //
-    try {
         console.log(`Hit router.post("/items")`);
         console.log(req.body);
         db.Item.create(
             req.body
         ).then(dbItems => {
             console.log(dbItems);
-            // res.render("views", { data: dbItems });
+            res.json(dbItems);
 
-        });
-    }
-    catch
-    {
-        error => console.log(error);
-    }
+        }).catch(err=>res.json(err));
 });
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
@@ -89,34 +71,47 @@ router.post("/items", function (req, res) {
 router.get("/get_vendor/:id", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
         console.log(`Hit router.get("/get_vendor/:id")`);
-        db.Vendor.findAll({
+        db.Vendor.findOne({
             where: {
                 id: req.params.id
             }
         }).then(function (dbVendors) {
-
-            console.log(dbVendors)
-            res.json(dbVendors)
+            console.log(dbVendors);
+            res.json(dbVendors);
         }).catch(err=>res.json(err));
-    
-    
+});
+
+router.get("/get_all_vendors", function (req, res) {
+    // sequelize findAll() so we get every row in the Items table
+        console.log(`Hit router.get("/get_all_vendors")`);
+        db.Vendor.findAll({}).then(function (dbVendors) {
+            console.log(dbVendors);
+            res.json(dbVendors);
+        }).catch(err=>res.json(err));
 });
 
 router.post("/add_vendor", function (req, res) {
     // sequelize create() so we can create new a vendor in our vendors table //
-    try {
         console.log(`Hit router.post("/add_vendor")`);
         db.Vendor.create(
             req.body
         ).then(newVendor => {
-            res.render("views", { data: newVendor });
+            console.log(newVendor);
+            res.json(newVendor);
+        }).catch(err=>res.json(err));
+});
 
-        });
-    }
-    catch
-    {
-        error => console.log(error);
-    }
+router.delete("/delete_vendor/:id", function (req, res) {
+    // sequelize findAll() so we get every row in the Items table
+        console.log(`Hit router.get("/get_vendor/:id")`);
+        db.Vendor.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbVendors) {
+            console.log(dbVendors);
+            res.json(dbVendors);
+        }).catch(err=>res.json(err));
 });
 
 module.exports = router;
