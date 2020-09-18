@@ -91,22 +91,18 @@ router.post("/items", function (req, res) {
 // GET route for getting all ITEMS in current inventory seeded on the backend //
 router.get("/get_vendor/:id", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
-    try
-    {
+    
         console.log(`Hit router.get("/get_vendor/:id")`);
         db.Vendor.findAll({
             where: {
-                item_id: req.params.id
+                id: req.params.id
             }
         }).then(function (dbVendors) {
             console.log(dbVendors)
             res.json(dbVendors)
-        });
-    }
-    catch
-    {
-        error=> console.log(error);
-    }
+        }).catch(err=>res.json(err));
+    
+    
 });
 
 

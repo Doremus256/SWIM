@@ -20,8 +20,9 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const api = require("./routes/api-routes"); 
-app.use(require("./routes/html-routes"));
+
 app.use("/api", api);
+app.use("/", require("./routes/html-routes"));
 // Sets up the Express app to handle data parsing
 
 // Syncing our sequelize models and then starting our express app
