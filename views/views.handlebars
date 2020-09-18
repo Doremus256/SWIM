@@ -1,10 +1,10 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="./assets/images/SWIM-Logo-title.jpg" width="30" height="30" alt="" loading="lazy">
+    <img src="./assets/images/SWIM-Logo-title.jpg" width="60" height="60" alt="" loading="lazy">
   </a>
 </nav>
 
-<h1>Stock Watch Inventory Management</h1>
+<h1>Stock Watch Inventory Manager</h1>
 </br>
 <hr>
 <div class="container-fluid">
@@ -46,10 +46,10 @@
                 <div class="row">
                     <div class="col-4">
                       <div class="row overflow-auto">
-                      {{each}}
-                      <div class="col-3"><p>Item: {{item}} </p></div>
-                      <div class="col-3"><p>Quantity: {{quantity}}</p></div>
-                      <div class="col-3"> <button type="button" class="btn btn-primary btn-sm">Source Info</button></div>
+                      {{#each data}}
+                      <div class="col-3"><p>Item: {{this.dataValues.item_name}} </p></div>
+                      <div class="col-3"><p>Quantity: {{this.dataValues.item_QOH}}</p></div>
+                      <div class="col-3"> <button type="button" data-itemid="{{this.dataValues.VendorId}}" class="btn btn-primary btn-sm" id="sourceBtn">Source Info</button></div>
                       {{/each}}
                       </div>
                     </div>
@@ -58,8 +58,7 @@
 
             <div class="col-4">
                 <div class="row overflow-auto">
-                    Pulls item specific pricing, availability and delivery time from
-                    separately maintained vendor database.
+                    vendor info
                 </div>
                 </br>
                 <div class="row">Budget Total

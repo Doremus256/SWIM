@@ -91,8 +91,6 @@ router.post("/items", function (req, res) {
 // GET route for getting all ITEMS in current inventory seeded on the backend //
 router.get("/get_vendor/:id", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
-    try
-    {
         console.log(`Hit router.get("/get_vendor/:id")`);
         db.Vendor.findOne({
             where: {
@@ -100,58 +98,33 @@ router.get("/get_vendor/:id", function (req, res) {
             }
         }).then(function (dbVendors) {
             console.log(dbVendors);
-            // res.render("views", {
-            //     Vendors: dbVendors
-            // });
+            res.json(dbVendors);
         });
-    }
-    catch
-    {
-        error=> console.log(error);
-    }
 });
 
 router.get("/get_all_vendors", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
-    try
-    {
         console.log(`Hit router.get("/get_all_vendors")`);
         db.Vendor.findAll({}).then(function (dbVendors) {
             console.log(dbVendors);
-            // res.render("views", {
-            //     data: dbVendors
-            // });
+            res.json(dbVendors);
         });
-    }
-    catch
-    {
-        error=> console.log(error);
-    }
 });
 
 router.post("/add_vendor", function (req, res) {
     // sequelize create() so we can create new a vendor in our vendors table //
-    try
-    {
         console.log(`Hit router.post("/add_vendor")`);
         db.Vendor.create(
             req.body
         ).then(newVendor => {
             console.log(newVendor);
-            // res.render("views", { data:newVendor });
+            res.json(newVendor);
 
         });
-    }
-    catch
-    {
-        error=> console.log(error);
-    }
 });
 
 router.delete("/delete_vendor/:id", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
-    try
-    {
         console.log(`Hit router.get("/get_vendor/:id")`);
         db.Vendor.destroy({
             where: {
@@ -159,15 +132,8 @@ router.delete("/delete_vendor/:id", function (req, res) {
             }
         }).then(function (dbVendors) {
             console.log(dbVendors);
-            // res.render("views", {
-            //     Vendors: dbVendors
-            // });
+            res.json(dbVendors);
         });
-    }
-    catch
-    {
-        error=> console.log(error);
-    }
 });
 
 module.exports = router;

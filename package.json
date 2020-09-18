@@ -19,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Doremus256/BarkApp.git"
+    "url": "git+https://github.com/Doremus256/SWIM.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Doremus256/BarkApp/issues"
+    "url": "https://github.com/Doremus256/SWIM/issues"
   },
-  "homepage": "https://github.com/Doremus256/BarkApp#readme"
+  "homepage": "https://github.com/Doremus256/SWIM#readme"
 }
