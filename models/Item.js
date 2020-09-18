@@ -38,12 +38,11 @@ module.exports = function (sequelize, DataTypes) {
                     allowNull: false
                }
           });
-     };
-     Item.associate = function (models) {
           Item.hasMany(models.Order, {
                onDelete: "cascade"
           });
      };
+     
      return Item;
 };
 
