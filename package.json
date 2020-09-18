@@ -1,7 +1,7 @@
 {
-  "name": "barkapp",
+  "name": "SWIM",
   "version": "1.0.0",
-  "description": "Twitter Clone - Project 2",
+  "description": "SWIM - Stock Watch Inventory Manager - Project 2",
   "main": "server.js",
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -19,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Doremus256/BarkApp.git"
+    "url": "git+https://github.com/Doremus256/SWIM.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Doremus256/BarkApp/issues"
+    "url": "https://github.com/Doremus256/SWIM/issues"
   },
-  "homepage": "https://github.com/Doremus256/BarkApp#readme"
+  "homepage": "https://github.com/Doremus256/SWIM#readme"
 }

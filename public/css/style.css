@@ -1,5 +1,10 @@
 body{
-    background-image: url("../images/SWIM-Logo.png");
+    background-image: url("");
     background-repeat: repeat;
     background-size: 100px 100px;
+  }
+
+  h1{
+    color: blackrgb(69, 69, 228);
+    text-align: center;
   }

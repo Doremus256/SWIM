@@ -29,9 +29,8 @@ module.exports = function (sequelize, DataTypes) {
                     len: [1]
                }
           }
-     }, {timestamps: false});
-
-
+     }, {timestamps: false})
+     
      Item.associate = function(models) {
 
           Item.belongsTo(models.Vendor, {
@@ -39,23 +38,11 @@ module.exports = function (sequelize, DataTypes) {
                     allowNull: false
                }
           });
-     };
-     Item.associate = function (models) {
           Item.hasMany(models.Order, {
                onDelete: "cascade"
           });
      };
+     
      return Item;
 };
 
-
-// Post.associate = function(models) {
-//      Post.belongsTo(models.Author, {
-//        foreignKey: {
-//          allowNull: false
-//        }
-//      });
-//    };
- 
-//    return Post;
-//  };

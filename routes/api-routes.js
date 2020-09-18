@@ -20,7 +20,7 @@ router.put("/items/:id", function (req, res) {
     try
     {
         console.log(`Hit router.get("/items/:id")`);
-        db.Items.update({
+        db.Item.update({
             item_QOH: req.body.item_QOH,
         }, {
             where: {
@@ -47,14 +47,13 @@ router.delete("/items/:id", function (req, res) {
     try
     {
         console.log(`Hit router.delete("/items/:id")`);
-        db.Items.destroy({
+        db.Item.destroy({
             where: {
                 id: req.body.id
             }
 
         }).then(dbItems => {
             res.render("views");
-
         });
     }
     catch
@@ -71,10 +70,11 @@ router.post("/items", function (req, res) {
     {
         console.log(`Hit router.post("/items")`);
         console.log(req.body);
-        db.Items.create(
+        db.Item.create(
             req.body
         ).then(dbItems => {
-            res.render("views", { data: dbItems });
+            console.log(dbItems);
+            // res.render("views", { data: dbItems });
 
         });
     }
@@ -89,19 +89,33 @@ router.post("/items", function (req, res) {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 // GET route for getting all ITEMS in current inventory seeded on the backend //
-router.get("/itemVendors/:id", function (req, res) {
+router.get("/get_vendor/:id", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
-    try
-    {
-        console.log(`Hit router.get("/itemVendors/:id")`);
-        db.vendors.findAll({
+    
+        console.log(`Hit router.get("/get_vendor/:id")`);
+        db.Vendor.findAll({
             where: {
-                item_id: req.params.id
+                id: req.params.id
             }
         }).then(function (dbVendors) {
-            res.render("views", {
-                Vendors: dbVendors
-            });
+            console.log(dbVendors)
+            res.json(dbVendors)
+        }).catch(err=>res.json(err));
+    
+    
+});
+
+
+router.post("/add_vendor", function (req, res) {
+    // sequelize create() so we can create new a vendor in our vendors table //
+    try
+    {
+        console.log(`Hit router.post("/add_vendor")`);
+        db.Vendor.create(
+            req.body
+        ).then(newVendor => {
+            res.render("views", { data:newVendor });
+
         });
     }
     catch
