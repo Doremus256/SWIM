@@ -98,8 +98,6 @@ router.get("/get_vendor/:id", function (req, res) {
             console.log(dbVendors)
             res.json(dbVendors)
         }).catch(err=>res.json(err));
-    
-    
 });
 
 router.post("/add_vendor", function (req, res) {
