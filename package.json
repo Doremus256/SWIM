@@ -1,5 +1,5 @@
 {
-  "name": "barkapp",
+  "name": "SWIM",
   "version": "1.0.0",
   "description": "Twitter Clone - Project 2",
   "main": "server.js",
@@ -9,8 +9,8 @@
     "express-handlebars": "^5.1.0",
     "express-session": "^1.17.1",
     "mysql": "^2.18.1",
-    "mysql2": "^2.1.0",
-    "sequelize": "^5.8.6"
+    "mysql2": "^2.2.1",
+    "sequelize": "^5.22.3"
   },
   "devDependencies": {},
   "scripts": {
