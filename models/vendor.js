@@ -1,6 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
   var Vendor = sequelize.define("Vendor", {
-    vendor_name: DataTypes.STRING,
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
