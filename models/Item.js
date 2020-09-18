@@ -26,13 +26,12 @@ module.exports = function (sequelize, DataTypes) {
                type: DataTypes.INTEGER,
                allowNull: true,
                validate: {
-
                     len: [1]
                }
           }
-     });
+     }, {timestamps: false});
 
-  
+
      Item.associate = function(models) {
 
           Item.belongsTo(models.Vendor, {
@@ -48,3 +47,15 @@ module.exports = function (sequelize, DataTypes) {
      };
      return Item;
 };
+
+
+// Post.associate = function(models) {
+//      Post.belongsTo(models.Author, {
+//        foreignKey: {
+//          allowNull: false
+//        }
+//      });
+//    };
+ 
+//    return Post;
+//  };
