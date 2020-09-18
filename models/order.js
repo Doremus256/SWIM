@@ -10,14 +10,21 @@ module.exports = function(sequelize, DataTypes) {
           item_price: {
                type: DataTypes.DECIMAL(12.2),
                allowNull: false,
-               validate:{
+               validate: {
                     len: [1]
                }
           },
           item_quantity: {
                type: DataTypes.INTEGER,
                allowNull: false,
-               validate:{
+               validate: {
+                    len: [1]
+               }
+          },
+          item_QIT: {
+               type: DataTypes.INTEGER,
+               allowNull: false,
+               validate: {
                     len: [1]
                }
           },
