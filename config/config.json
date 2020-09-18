@@ -1,7 +1,7 @@
 {
     "development": {
       "username": "root",
-      "password": "smartcar",
+      "password": "password",
       "database": "swim_db",
       "host": "localhost",
       "port": 3306,
@@ -9,7 +9,7 @@
     },
     "test": {
       "username": "root",
-      "password": "smartcar",
+      "password": "password",
       "database": "database_test",
       "host": "localhost",
       "port": 3306,
@@ -17,7 +17,7 @@
     },
     "production": {
       "username": "root",
-      "password": "smartcar",
+      "password": "password",
       "database": "database_production",
       "host": "localhost",
       "port": 3306,
