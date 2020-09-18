@@ -1,7 +1,7 @@
 {
   "name": "barkapp",
   "version": "1.0.0",
-  "description": "Twitter Clone - Project 2",
+  "description": "SWIM - Stock Watch Inventory Manager - Project 2",
   "main": "server.js",
   "dependencies": {
     "dotenv": "^8.2.0",
