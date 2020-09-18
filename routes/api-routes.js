@@ -8,24 +8,9 @@ var db = require("../models");
 // ROUTES // ROUTES // ROUTES // ROUTES // ROUTES  //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-
-
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 // ROUTES for ITEMS table //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
-    // GET route for getting all ITEMS in current inventory seeded on the backend //
-    router.get("/", function (req, res) {
-        // sequelize findAll() so we get every row in the Items table
-        db.Items.findAll({}).then(function (dbItems) {
-            res.render("views", {
-                data: dbItems
-            });
-        });
-    });
-
-
 
 // PUT route for updating current inventory given :item //
 router.put("/items/:id", function (req, res) {
