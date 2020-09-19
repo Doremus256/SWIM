@@ -12,6 +12,18 @@ var db = require("../models");
 // ROUTES for ITEMS table //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
+// GET ALL ITEMS - - ALREADY IN HTML ROUTES  //
+// router.get("/get_all_items", function (req, res) {
+    // sequelize findAll() so we get every row in the Items table
+//         console.log(`Hit router.get("/get_all_items")`);
+//         db.Item.findAll({}).then(function (dbItems) {
+//             console.log(dbItems);
+//             res.render("views", {
+//                 dbItems: JSON.stringify(dbItems)}
+//                 );
+//         }).catch(err=>res.json(err));
+// });
+
 // PUT route for updating current inventory given :item //
 router.put("/items/:id", function (req, res) {
     console.log(req.body);
@@ -67,9 +79,9 @@ router.post("/add_item", function (req, res) {
 // ROUTES for VENDORS table //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-// GET route for getting all ITEMS in current inventory seeded on the backend //
+// GET route for getting all VENDORS in current inventory seeded on the backend //
 router.get("/get_vendor/:id", function (req, res) {
-    // sequelize findAll() so we get every row in the Items table
+    // sequelize findOne() so we get every row in the Items table
         console.log(`Hit router.get("/get_vendor/:id")`);
         db.Vendor.findOne({
             where: {

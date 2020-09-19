@@ -9,10 +9,10 @@ router.get("/", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
     try {
         console.log("Hit router.get(items)");
-        db.Item.findAll({})
+        db.Item.findAll({raw: true})
             .then(function (dbItems) {
                 console.log(dbItems)
-                res.render("views", { data: dbItems })
+                res.render("views", { dbItems })
             })
             .catch(error => res.json(error)
             );
