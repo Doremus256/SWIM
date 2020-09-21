@@ -3,14 +3,18 @@
     <img class="ml-4" src="./assets/images/SWIM-Logo-title.jpg" width="60" height="60" alt="" loading="lazy">
   </a>
 </nav>
-
+{{!-- Website Header --}}
 <h1 class="text-white ml-5 mt-2">Stock Watch Inventory Manager</h1>
-</br>
+
+<br>
 <hr>
+
+{{!-- UPDATE Button on upper part of page - updates item_QOH within INVENTORY OVERFLOW WINDOW--}}
+
 <div class="container-fluid">
   <div class="row mx-5">
+    {{!-- Select item from inventory (dropdown menu) that has been used --}}
     <div class="col-12-sm mx-5 shadow-lg">
-      {{!-- Update Button on upper part of page - updates item_QOH --}}
       <div class="btn-group">
         <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -22,48 +26,96 @@
       </div>
     </div>
     <div class="col-12-sm mx-5 shadow-lg">
-      <div class="btn-group">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Quantity Used
-        </button>
-        <div class="dropdown-menu">
-          ...
-        </div>
+      {{!-- Quantity of Item Used --}}
+      <div class="col-12-sm mx-5 px-3 pt-2 bg-secondary rounded text-white shadow-lg">
+        <label for="quantityUsed">Quantity Used</label>
+        <input class="rounded border border-secondary" type="number" min="0" max="100000.00" step="0"
+          name="quantityUsed" id="quantityUsed" required="required">
       </div>
     </div>
     <div class="col-12-sm mx-5 px-3 pt-2 bg-secondary rounded text-white shadow-lg">
-      <label for="price">Price:</label>
-      <input class="rounded border border-secondary" type="number" min="0.00" max="100000.00" step="0.01" name="price" id="price" required="required">
+      <label for="price">Price</label>
+      <input class="rounded border border-secondary" type="number" min="0.00" max="100000.00" step="0.01" name="price"
+        id="price" required="required">
     </div>
     <input class="btn btn-primary mx-5 px-5" type="button" value="Update">
   </div>
-  <hr>
-  </br>
-    
-  <div class="row">
-            <div class="col-7 bg-secondary mx-5 shadow-lg rounded text-white">
-                <div class="row shadow-lg">
-                    <div class="col-4">
-                      <div class="row overflow-auto rounded">
-                      {{#each data}}
-                      <div class="col-3 bg-secondary"><p>Item: {{this.dataValues.item_name}} </p></div>
-                      <div class="col-3"><p>Quantity: {{this.dataValues.item_QOH}}</p></div>
-                      <div class="col-3"> <button type="button" data-itemid="{{this.dataValues.VendorId}}" class="btn btn-primary btn-sm" id="sourceBtn">Source Info</button></div>
-                      {{/each}}
-                      </div>
-                    </div>
-                </div>
-            </div>
+</div>
 
-            <div class="col-4 ml-3">
-                <div class="row col-5 mr-3 overflow-auto bg-secondary shadow-lg text-white rounded">
-                    vendor info
-                </div>
-                </br>
-                <div class="row col-5 mr-3 bg-secondary shadow-lg text-white rounded">Budget Total
-                    New Budget goes here
-                </div>
-            </div>
+<br>
+<hr>
+
+{{!-- ADD A NEW ITEM TO INVENTORY include vendor selection from dropdown menu --}}
+
+<form class="form-inline">
+  <div class="form-group mb-2">
+    <label for="item_name">Item</label>
+    <input type="text" class="form-control" id="item_name">
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="item_QOH">Quantity</label>
+    <input type="text" class="form-control" id="item_QOH">
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="item_description">Description</label>
+    <input type="text" class="form-control" id="item_description">
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="item_price">Price</label>
+    <input type="text" class="form-control" id="item_price">
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="VendorId">Vendor ID</label>
+    <input type="text" class="form-control" id="VendorId">
+  </div>
+  <button type="submit" id="addInventory" class="btn btn-primary mb-2">Add Item To Inventory</button>
+</form>
+</div>
+
+<br>
+<hr>
+
+{{!-- INVENTORY LIST displaying inside OVERFLOW --}}
+
+<div class="row">
+  <div class="col-7 bg-secondary mx-5 shadow-lg rounded text-white">
+    <div class="row shadow-lg">
+      <div class="col-10">
+        <div class="row overflow-auto rounded">
+          {{#each dbItems}}
+          <div class="col-4">
+            <p>{{this.item_name}} </p>
+          </div>
+          <div class="col-4">
+            <p>{{this.item_QOH}}</p>
+          </div>
+          <div class="col-2"> <button type="button" data-itemid="{{this.VendorId}}" class="btn btn-primary btn-sm"
+              id="sourceBtn">Source Info</button></div>
+          {{/each}}
         </div>
+      </div>
+    </div>
+  </div>
 
+{{!-- LINKED TO SOURCE INFO BUTTON - Displays the Vendors that stock a particular ITEM by item ID --}}
+
+  <div class="col-4 ml-3">
+    {{!-- This is where vendors appear --}}
+    <div class="row col-5 mr-3 overflow-auto bg-secondary shadow-lg text-white rounded">
+      vendor info displayed
+    </div>
+
+    </br>
+
+  {{!-- Budget Section --}}
+
+    <div class="form-group mx-sm-3 mb-2">
+      {{!-- User inputs total procurement budget --}}
+      <label for="budgetTotal">Monthly Budget</label>
+      <input type="text" class="form-control" id="budgetTotal">
+    </div>
+    {{!-- Displays Remaining Budget, after user clicks UPDATE button --}}
+    <div class="row col-5 mr-3 bg-secondary shadow-lg text-white rounded">Budget Total
+    </div>
+  </div>
+</div>
