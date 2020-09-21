@@ -9,6 +9,8 @@ router.get("/", function (req, res) {
     // sequelize findAll() so we get every row in the Items table
     try {
         console.log("Hit router.get(items)");
+        // RAW TRUE (line 14) can be set at individual spots //
+        // or required for entire app in server.js file //
         db.Item.findAll({raw: true})
             .then(function (dbItems) {
                 console.log(dbItems)
